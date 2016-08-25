@@ -45,7 +45,7 @@ func initTest() {
 func thread_test(client *redis.Client, over chan<- struct{}) {
 	for i := 0; i < TIMES; i++ {
 		id := rand.Intn(COUNTS)
-		val, _ := ClientDealWithGoods(client, lua_script_calc, []string{goodsKey, usersKey}, id)
+		val, _ := ClientDealWithGoods(client, Lua_script_calc, []string{goodsKey, usersKey}, id)
 		if val == "-1" {
 			break
 		} else {
@@ -92,6 +92,6 @@ func Test_ConcurrentTest(t *testing.T) {
 	}
 	log.Info("verified result:", verifyTest())
 	costs := time.Now().Sub(start).Seconds()
-	log.Info(costs, " qps:", (COUNTS / costs))
+	log.Info("costs time:", costs, " qps:", (COUNTS / costs))
 	log.Info("consume goods' counts:", counts)
 }

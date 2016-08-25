@@ -47,7 +47,7 @@ func NewGoodsServer() *GoodsServer {
 
 func (gs *GoodsServer) ConsumeGoods() (interface{}, error) {
 	id := rand.Intn(COUNTS)
-	return helper.ClientDealWithGoods(gs.client, helper.lua_script_calc, []string{goodsKey, usersKey}, id)
+	return helper.ClientDealWithGoods(gs.client, helper.Lua_script_calc, []string{goodsKey, usersKey}, id)
 }
 
 func (gs GoodsServer) testHandler(w http.ResponseWriter, r *http.Request) {
@@ -95,5 +95,4 @@ func main() {
 	if err := http.Serve(l, nil); err != nil {
 		log.Error(err)
 	}
-	// http.ListenAndServe(":8888", nil)
 }

@@ -7,7 +7,7 @@ import (
 
 type lua_script func() string
 
-func lua_script_calc() string {
+func Lua_script_calc() string {
 	return "if redis.call('GET', KEYS[1]) <= '0' then return '-1' else redis.call('RPUSH', KEYS[2], ARGV[1]) return redis.call('INCRBY',KEYS[1], -1) end"
 }
 

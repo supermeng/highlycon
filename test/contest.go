@@ -28,5 +28,5 @@ func main() {
 		get()
 	}
 	costs := time.Now().Sub(start).Seconds()
-	log.Info(costs, " qps:", (COUNTS / costs))
+	log.Info("costs time:", costs, " qps:", (COUNTS / costs))
 }
